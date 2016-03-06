@@ -29,7 +29,8 @@ int main(int argc, const char * argv[])
     frame.bottom = 100 + 600 + 1;
     
     aux::asset_ptr<window> wnd = new window(WSTR("this://app/default.htm"),frame);
-    
+    wnd->register_drop();
+  
     //sciter::debug_output debug_console(wnd->get_hwnd());
     
     [get_nswindow(wnd) makeKeyAndOrderFront: nil];

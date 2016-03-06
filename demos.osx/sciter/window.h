@@ -12,6 +12,7 @@
 #include "sciter-x.h"
 #include "aux-asset.h"
 #include "aux-cvt.h"
+#include "sciter-x-dom.hpp"
 
 bool get_sciter_resource(const char* name, const byte* &data, size_t& data_length);
 
@@ -70,7 +71,14 @@ public:
     
     sciter::value get_glass();
     sciter::value set_glass(sciter::value on_off);
-
+  
+    // drag-n-drop files on window
+    void register_drop();
+  
+    void on_file_drop(const sciter::string& file)
+    {
+      this->call_function("dropFile", file);
+    }
 };
 
 

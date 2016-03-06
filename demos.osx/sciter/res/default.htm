@@ -98,7 +98,11 @@
 				 "SCAPP files only (*.zip,*.scapp)|*.ZIP;*.SCAPP|"
 				 "All Files (*.*)|*.*";
          
-      var debugIsActive = false; 
+      var debugIsActive = false;
+
+      function dropFile(fn) {
+        self.post(:: loadFile.call(self.ns, "file://" + fn));
+      }
 
       function loadFile(fn)
       {
@@ -110,6 +114,8 @@
         if(debugIsActive)
           view.launchDebugView();
         var croot = content[0];
+        if(!croot)
+          return;
         var title = croot.$(head>title); 
         if( title )
           view.caption =  title.text || "Sciter"; 
